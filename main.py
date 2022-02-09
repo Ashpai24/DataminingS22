@@ -20,7 +20,7 @@ content = "".join([s for s in content_no_names.strip().splitlines(True) if s.str
     2. The end character of a sentence is followed by a space (' ') then a capital letter    
 '''
 
-pattern = re.compile(r'([A-Z][^\.!?]*[\.!?])')
+pattern = re.compile(r'([A-Z][^\.!?]+[\.!?])')
 list_of_sentences = re.findall(pattern, content)
 
 print(list_of_sentences)
