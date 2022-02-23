@@ -1,8 +1,14 @@
 # Importing re package (used for regular expression)
+import os
 import re
 import nltk
+from os.path import exists
 
-# Constructing Pattern for words with only capital letters
+FILE_NAME = "Bigrams_Occurrence.txt"
+if exists(FILE_NAME):
+    os.remove(FILE_NAME)
+
+# Constructing Pattern for Parsing Sentences
 pattern = re.compile(r"('?[A-Z],?'?\s?[a-z][^\d.!?]*-?[-\".!?])")
 
 # Turning the file into a string
@@ -35,10 +41,11 @@ for word in sentences:
         pronoun_verb_pairs.append(match2.lower())
 
 # Printing the Len of each Calculated List
-print(len(noun_verb_pairs))
-print(len(pronoun_verb_pairs))
+print("Number of Noun Verb Pairs: " + str(len(noun_verb_pairs)))
+print("Number of Pronoun Verb Pairs: " + str(len(pronoun_verb_pairs)))
 
 combined_list = noun_verb_pairs + pronoun_verb_pairs
+print("Number of Noun Verb and Pronoun Verb Pairs: " + str(len(combined_list)))
 
 # '(w, POS), (w2, POS)' Structure --> (w1, w2, w3, ... wN)
 pattern_parse = re.compile(r"([a-z]+)(?=',)")
@@ -60,13 +67,11 @@ for item in paired_list:
     else:
         dictionary[item] = 1
 
-# Printing top 10 K, V Pairs of Dictionary
-f = open("Highest_Occuring_Bigrams.txt", "a")
-i = 0
+# Printing top 10 K, V Pairs of Dictionary - Unless there is Tie
+f = open(FILE_NAME, "a")
 sorted_keys = sorted(dictionary, key=dictionary.get, reverse=True)
 for r in sorted_keys:
-    if i < 10:
+    if dictionary[r] >= 3:
         f.write("Word Pair: " + r + " --> Number Occurrences: " + str(dictionary[r]) + "\n")
-    i += 1
 
 f.close()
