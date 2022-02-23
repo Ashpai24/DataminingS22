@@ -1,0 +1,10 @@
+Word Pair: it is --> Number Occurrences: 17
+Word Pair: you are --> Number Occurrences: 6
+Word Pair: you have --> Number Occurrences: 5
+Word Pair: we have --> Number Occurrences: 4
+Word Pair: you know --> Number Occurrences: 4
+Word Pair: it be --> Number Occurrences: 4
+Word Pair: they exit --> Number Occurrences: 4
+Word Pair: he hath --> Number Occurrences: 4
+Word Pair: father lost --> Number Occurrences: 3
+Word Pair: you do --> Number Occurrences: 3
